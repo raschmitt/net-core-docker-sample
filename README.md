@@ -1,2 +1,2 @@
 # .net-core-docker-sample
-.Net Core sample API using docker
+.Net Core sample API using docker.
