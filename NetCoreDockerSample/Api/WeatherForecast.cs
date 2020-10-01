@@ -1,6 +1,6 @@
 using System;
 
-namespace NetCoreDockerSample
+namespace Api
 {
     public class WeatherForecast
     {
