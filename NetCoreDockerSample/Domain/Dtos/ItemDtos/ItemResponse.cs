@@ -1,13 +1,16 @@
 using System;
+using Domain.Entities;
 
-namespace Domain.Dtos.Item
+namespace Domain.Dtos.ItemDtos
 {
     public class ItemResponse : ItemBase
     {
         public Guid Id { get; set; }
         public bool Active { get; set; }
 
-        public ItemResponse(Entities.Item item)
+        public ItemResponse() { }
+        
+        public ItemResponse(Item item)
         {
             Id = item.Id;
             Description = item.Description;
