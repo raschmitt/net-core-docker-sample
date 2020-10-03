@@ -7,6 +7,7 @@ namespace Tests.Builder.Entities
     {
         private string _description = "Bacon";
         private double _price = 10.50;
+        private bool _active = true;
 
         public Item Build()
         {
@@ -16,7 +17,12 @@ namespace Tests.Builder.Entities
                 .Build();
 
             var item = new Item(itemRequest);
-            
+
+            if (!_active)
+            {
+                item.Inactivate();
+            }
+
             return item;
         }
 
@@ -29,6 +35,12 @@ namespace Tests.Builder.Entities
         public ItemBuilder WithPrice(double value)
         {
             _price = value;
+            return this;
+        }        
+
+        public ItemBuilder Inactive()
+        {
+            _active = false;
             return this;
         }
     }
