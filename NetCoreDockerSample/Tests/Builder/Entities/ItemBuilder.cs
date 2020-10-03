@@ -1,3 +1,4 @@
+using System;
 using Domain.Entities;
 using Tests.Builder.Dtos.Item;
 
@@ -5,6 +6,7 @@ namespace Tests.Builder.Entities
 {
     public class ItemBuilder
     {
+        private Guid _id;
         private string _description = "Bacon";
         private double _price = 10.50;
 
