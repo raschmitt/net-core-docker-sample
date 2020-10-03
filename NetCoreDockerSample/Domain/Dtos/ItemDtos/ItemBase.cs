@@ -1,6 +1,6 @@
-namespace Domain.Dtos.Item
+namespace Domain.Dtos.ItemDtos
 {
-    public class ItemBase
+    public abstract class ItemBase
     {
         public string Description { get; set; } 
         public double Price { get; set; } 

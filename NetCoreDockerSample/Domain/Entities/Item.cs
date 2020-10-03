@@ -1,5 +1,5 @@
 using System;
-using Domain.Dtos.Item;
+using Domain.Dtos.ItemDtos;
 
 namespace Domain.Entities
 {

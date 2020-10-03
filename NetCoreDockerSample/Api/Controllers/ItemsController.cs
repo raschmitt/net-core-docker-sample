@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Domain.Dtos.Item;
+using Domain.Dtos.ItemDtos;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
