@@ -1,0 +1,16 @@
+  
+trigger:
+    - master
+    
+    pool:
+      vmImage: 'windows-latest'
+    
+    resources:
+      repositories:
+        - repository: templates
+          type: git
+          ref: refs/heads/master
+          name: pipeline-templates
+    
+    extends:
+      template: Build\dotnet.yml@templates
