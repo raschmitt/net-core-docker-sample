@@ -10,6 +10,8 @@ namespace Domain.Entities
         public double Price { get; private set; } 
         public bool Active { get; private set; }
 
+        private Item() { }
+        
         public Item(ItemRequest itemRequest)
         {
             Id = Guid.NewGuid();
@@ -18,15 +20,13 @@ namespace Domain.Entities
             Active = true;
         }
 
-        public Item(string description, double price)
+        public void Update(ItemRequest itemRequest)
         {
-            Id = Guid.NewGuid();
-            Description = description;
-            Price = price;
-            Active = true;
+            Description = itemRequest.Description;
+            Price = itemRequest.Price;
         }
-        
-        public void InactivateItem()
+
+        public void Inactivate()
         {
             Active = false;
         }

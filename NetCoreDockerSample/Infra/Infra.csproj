@@ -9,10 +9,7 @@
       <Compile Remove="Class1.cs" />
       <Compile Remove="Migrations\20201001024833_AddItemsTable.cs" />
       <Compile Remove="Migrations\20201001024833_AddItemsTable.Designer.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Data\Migrations" />
+      <Compile Remove="Data\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -26,6 +23,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Data\Migrations\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Data\Migrations\**" />
     </ItemGroup>
 
 </Project>

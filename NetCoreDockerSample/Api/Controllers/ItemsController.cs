@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Dtos.Item;
 using Domain.Interfaces.Services;
@@ -19,33 +18,35 @@ namespace Api.Controllers
         }
         
         [HttpPost]
-        public void Create()
+        public async Task<IActionResult> Add([FromBody] ItemRequest itemRequest)
         {
-
+            return Ok(await _itemService.Add(itemRequest));
         }
         
-        [HttpPost]
-        public void Update()
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
+            await _itemService.Delete(id);
 
-        }     
-        
+            return NoContent();
+        }
+    
         [HttpGet]
-        public async Task<List<ItemResponse>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return await _itemService.GetAll();
+            return Ok(await _itemService.GetAll());
         }        
         
         [HttpGet("{id}")]
-        public async Task<ItemResponse> GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            return await _itemService.GetById(id);
+            return Ok(await _itemService.GetById(id));
         }        
         
-        [HttpDelete]
-        public void Delete()
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ItemRequest itemRequest)
         {
-
-        }
+            return Ok(await _itemService.Update(id, itemRequest));
+        } 
     }
 }
