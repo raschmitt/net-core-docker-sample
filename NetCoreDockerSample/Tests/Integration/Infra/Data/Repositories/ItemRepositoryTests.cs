@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using FluentAssertions;
-using Infra.Data;
 using Infra.Data.Repositories;
 using Tests.Builder.Dtos.Item;
 using Tests.Builder.Entities;
@@ -22,16 +21,15 @@ namespace Tests.Integration.Infra.Data.Repositories
         
         public ItemRepositoryTests()
         {
-            _actRepository = new ItemRepository(_actContext);
-            _assertRepository = new ItemRepository(_assertContext);
+            _actRepository = new ItemRepository(ActContext);
+            _assertRepository = new ItemRepository(AssertContext);
             
             _itemA = new ItemBuilder().Build();
             _itemB = new ItemBuilder().Build();
 
             _items = new List<Item> {_itemA, _itemB};
             
-            _context.AddRange( _itemA, _itemB );
-            _context.SaveChanges();
+            SeedData(_items);
         }
         
         [Fact]
@@ -42,7 +40,7 @@ namespace Tests.Integration.Infra.Data.Repositories
             
             //Act
             await _actRepository.Add(item);
-            await _actContext.SaveChangesAsync();
+            await ActContext.SaveChangesAsync();
                 
             //Assert
             var addedItem = await _assertRepository.GetById(item.Id);
@@ -85,7 +83,7 @@ namespace Tests.Integration.Infra.Data.Repositories
             
             //Act
             await _actRepository.Update(_itemA);
-            await _actContext.SaveChangesAsync();
+            await ActContext.SaveChangesAsync();
                 
             //Assert
             var updatedItem = await _assertRepository.GetById(_itemA.Id);
