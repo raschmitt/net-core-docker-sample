@@ -1,0 +1,23 @@
+version: "3.8"
+
+volumes:
+    sql-server:
+
+services: 
+    sql-server:
+        build: 
+            context: ./
+            dockerfile: Dockerfile.Mssql
+        ports:
+            - "1433:1433"
+        volumes: 
+            - sql-server:/var/opt/mssql
+
+    net-core-sample:
+        build:
+            context: ./
+            dockerfile: Dockerfile.Api
+        ports:
+          - "80:80"
+        depends_on:
+          - sql-server

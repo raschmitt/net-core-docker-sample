@@ -27,7 +27,7 @@ namespace Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
-            services.AddDbContext<DbContext>(UseSqlServerDatabase);
+            services.AddDbContext<Context>(UseSqlServerDatabase);
 
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IItemRepository, ItemRepository>();
@@ -36,7 +36,7 @@ namespace Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
-            var context = serviceScope.ServiceProvider.GetRequiredService<Infra.Data.Context>();
+            var context = serviceScope.ServiceProvider.GetRequiredService<Context>();
             context.Database.Migrate();
             
             app.UseSwagger();
