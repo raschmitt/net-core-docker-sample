@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(Data.Context))]
     [Migration("20201001025033_AddItemsTable")]
     partial class AddItemsTable
     {
