@@ -5,3 +5,11 @@
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fraschmitt%2Fnet-core-docker-sample%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/raschmitt/net-core-docker-sample/master)
 
 Sample .Net Core API, with SQL Server Database, containerized with Docker and ready to use.
+
+## How to run this API
+
+Under construction...
+
+## Contributions
+
+  Contributions and feature requests are always welcome.
