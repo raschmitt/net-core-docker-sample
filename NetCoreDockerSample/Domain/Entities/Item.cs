@@ -30,10 +30,5 @@ namespace Domain.Entities
         {
             Active = false;
         }
-        
-        public void SetId()
-        {
-            Active = false;
-        }
     }
 }
