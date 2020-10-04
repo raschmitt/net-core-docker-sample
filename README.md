@@ -5,7 +5,11 @@
 
 Sample .Net Core API, with SQL Server Database, containerized with Docker and ready to use.
 
-## How to run this API
+## Project Dependencies 
+
+- [Docker](https://docs.docker.com/get-docker/)
+
+## How to run
 
 Under construction...
 
