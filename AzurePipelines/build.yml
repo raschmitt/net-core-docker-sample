@@ -1,6 +1,6 @@
 trigger:
   - master
-  - feature
+  - feature/*
   
 pool:
   vmImage: 'windows-latest'
