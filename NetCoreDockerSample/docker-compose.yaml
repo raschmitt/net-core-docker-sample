@@ -3,11 +3,12 @@ version: "3.8"
 volumes:
     sql-server:
 
-services: 
+services:     
     sql-server:
-        build: 
-            context: ./
-            dockerfile: Dockerfile.Mssql
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=sa@a2020
         ports:
             - "1433:1433"
         volumes: 
@@ -19,5 +20,7 @@ services:
             dockerfile: Dockerfile.Api
         ports:
           - "80:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
         depends_on:
           - sql-server
