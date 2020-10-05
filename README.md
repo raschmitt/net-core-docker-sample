@@ -19,7 +19,7 @@ Sample .Net Core API, with SQL Server Database, containerized with Docker and re
 
 - ### Connecting to the container's database
 
-If you wish to connect to the container's database with [mssql-cli](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15), [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15), or any othe database management tools you can do so with the following credentials:
+If you wish to connect to the container's database with [mssql-cli](https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15), [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15), or any other database management tool you can do so with the following credentials:
 
 | Parameter | Value |
 | :---: | :---: |
