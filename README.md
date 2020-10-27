@@ -30,6 +30,7 @@ If you wish to connect to the container's database with [mssql-cli](https://docs
 ## How to debug 
 
 - [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/containers/edit-and-refresh?view=vs-2019)
+- [Visual Studio Code](https://code.visualstudio.com/docs/containers/debug-netcore)
 - [Rider](https://blog.jetbrains.com/dotnet/2018/07/18/debugging-asp-net-core-apps-local-docker-container/)
  
 ## Contributions
