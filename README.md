@@ -5,7 +5,7 @@
 
 Sample .Net Core API, with SQL Server Database, containerized with Docker and ready to use.
 
-## Project Dependencies 
+## Dependencies 
 
 - [Docker](https://docs.docker.com/get-docker/)
 
@@ -26,6 +26,12 @@ If you wish to connect to the container's database with [mssql-cli](https://docs
 | Server name | 127.0.0.1,1433 |
 | Login | sa |
 | Paswword | sa@2020 |
+
+## How to debug 
+
+- [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/containers/edit-and-refresh?view=vs-2019)
+- [Visual Studio Code](https://code.visualstudio.com/docs/containers/debug-netcore)
+- [Rider](https://blog.jetbrains.com/dotnet/2018/07/18/debugging-asp-net-core-apps-local-docker-container/)
  
 ## Contributions
 
