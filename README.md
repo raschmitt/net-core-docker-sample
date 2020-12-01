@@ -25,7 +25,7 @@ If you wish to connect to the container's database with [mssql-cli](https://docs
 | :---: | :---: |
 | Server name | 127.0.0.1,1433 |
 | Login | sa |
-| Paswword | sa@2020 |
+| Paswword | sa@a2020 |
 
 ## How to debug 
 
