@@ -25,7 +25,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Remove="appsettings.Docker.json" />
   </ItemGroup>
 
 </Project>
