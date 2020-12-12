@@ -6,21 +6,22 @@ volumes:
 services:     
     sql-server:
         image: "mcr.microsoft.com/mssql/server:2017-latest"
+        container_name: net-core-sample-db
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=sa@a2020
+            - SA_PASSWORD=sa@@2020
         ports:
             - "1433:1433"
         volumes: 
             - sql-server:/var/opt/mssql
 
     net-core-sample:
+        image: net-core-sample
+        container_name: net-core-sample
         build:
             context: ./
-            dockerfile: Dockerfile.Api
+            dockerfile: Dockerfile
         ports:
-          - "80:80"
-        environment:
-            - ASPNETCORE_ENVIRONMENT=Docker
+          - "8080:80"
         depends_on:
           - sql-server
