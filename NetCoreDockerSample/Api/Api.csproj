@@ -20,11 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="WeatherForecast.cs" />
-    <Compile Remove="Controllers\WeatherForecastController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="appsettings.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
