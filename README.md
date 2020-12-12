@@ -15,7 +15,7 @@ Sample .Net Core API, with SQL Server Database, containerized with Docker and re
 
 1. After cloning this repository go into the `NetCoreDockerSample` directory and run `docker-compose up`.
 
-2. Access [http://localhost/swagger](http://localhost/swagger) and you are good to start playing with this API.
+2. Access [http://localhost:8080/swagger](http://localhost/swagger) and you are good to start playing with this API.
 
 - ### Connecting to the container's database
 
@@ -25,7 +25,7 @@ If you wish to connect to the container's database with [mssql-cli](https://docs
 | :---: | :---: |
 | Server name | 127.0.0.1,1433 |
 | Login | sa |
-| Paswword | sa@a2020 |
+| Paswword | sa@@2020 |
 
 ## How to debug 
 
