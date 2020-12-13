@@ -4,6 +4,7 @@ using Domain.Interfaces.Services;
 using Domain.Services;
 using Infra.Data;
 using Infra.Data.Repositories;
+using Infra.Data.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -37,8 +38,10 @@ namespace Api
         {
             var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
             var context = serviceScope.ServiceProvider.GetRequiredService<Context>();
-            context.Database.Migrate();
             
+            context.Database.Migrate();
+            context.Seed();
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
