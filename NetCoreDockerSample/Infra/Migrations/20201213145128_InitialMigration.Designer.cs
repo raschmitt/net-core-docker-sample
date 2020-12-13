@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Migrations
 {
-    [DbContext(typeof(Data.Context))]
-    [Migration("20201001025033_AddItemsTable")]
-    partial class AddItemsTable
+    [DbContext(typeof(Context))]
+    [Migration("20201213145128_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
