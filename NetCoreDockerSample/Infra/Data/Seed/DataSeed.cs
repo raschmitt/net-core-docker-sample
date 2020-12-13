@@ -1,9 +1,4 @@
-﻿using System.Linq;
-using Bogus;
-using Domain.Dtos.ItemDtos;
-using Domain.Entities;
-
-namespace Infra.Data.Seed
+﻿namespace Infra.Data.Seed
 {
     public static class DataSeed
     {
