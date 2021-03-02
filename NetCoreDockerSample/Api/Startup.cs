@@ -28,6 +28,9 @@ namespace Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddHealthChecks();
+            
             services.AddDbContext<Context>(UseSqlServerDatabase);
 
             services.AddScoped<IItemService, ItemService>();
@@ -54,9 +57,9 @@ namespace Api
             }
 
             app.UseRouting();
-            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
-            {
+            { 
+                endpoints.MapHealthChecks("/health");
                 endpoints.MapControllers();
             });
         }
