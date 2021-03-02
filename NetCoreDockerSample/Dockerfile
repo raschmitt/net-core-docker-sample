@@ -12,4 +12,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 COPY --from=build-env /src/Api/out .
 ENTRYPOINT ["dotnet", "Api.dll"]
 
+RUN apt-get update && apt-get install curl 
+HEALTHCHECK CMD curl --fail http://localhost:80/health || exit
+
 EXPOSE 80
