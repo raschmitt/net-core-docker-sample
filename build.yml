@@ -1,6 +1,9 @@
 trigger:
   - master
-  
+
+variables:
+- group: net-core-docker-sample
+
 resources:
   repositories:
     - repository: templates
