@@ -1,9 +1,8 @@
 trigger:
   - master
-  - feature/*
-  
-pool:
-  vmImage: 'windows-latest'
+
+variables:
+- group: net-core-docker-sample
 
 resources:
   repositories:
@@ -13,4 +12,4 @@ resources:
       name: pipeline-templates
 
 extends:
-  template: Build\dotnet.yml@templates
+  template: templates\c_sharp\template.yml@templates
