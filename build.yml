@@ -13,3 +13,5 @@ resources:
 
 extends:
   template: templates\c_sharp\template.yml@templates
+  parameters:
+    deploy_application: true
