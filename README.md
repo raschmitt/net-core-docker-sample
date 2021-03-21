@@ -14,7 +14,7 @@ Sample .Net Core API, with SQL Server Database, containerized with Docker and re
 
 - [Docker](https://docs.docker.com/get-docker/)
 
-## Live preview
+## Live preview [![Website](https://img.shields.io/website?down_message=Unhealthy&label=Health%20Check&up_message=Healthy&url=https%3A%2F%2Fnet-core-docker-sample-service-raschmitt.cloud.okteto.net%2Fhealth)](https://net-core-docker-sample-service-raschmitt.cloud.okteto.net/health)
 
 A live preview of this api can be found [here](https://net-core-docker-sample-service-raschmitt.cloud.okteto.net/swagger/index.html).
 
