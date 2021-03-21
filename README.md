@@ -1,9 +1,12 @@
 # .Net Core - Docker Sample
 
-[![Azure DevOps builds](https://img.shields.io/azure-devops/build/raschmitt/7618d927-8467-43e2-b5e9-1aeddc1fbfdc/26?label=Build%20%26%20Test&style=flat-square)](https://dev.azure.com/raschmitt/raschmitt/_build?definitionId=26)
+[![Azure DevOps builds (stage)](https://img.shields.io/azure-devops/build/raschmitt/7618d927-8467-43e2-b5e9-1aeddc1fbfdc/26?label=Continuous%20Integration&stage=CI)](https://dev.azure.com/raschmitt/raschmitt/_build?definitionId=26)
+[![Azure DevOps builds (stage)](https://img.shields.io/azure-devops/build/raschmitt/7618d927-8467-43e2-b5e9-1aeddc1fbfdc/26?label=Continuous%20Delivery&stage=CD)](https://dev.azure.com/raschmitt/raschmitt/_build?definitionId=26)
 [![Sonar Coverage](https://img.shields.io/sonar/coverage/raschmitt_net-core-docker-sample?label=Code%20coverage&server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/dashboard?id=raschmitt_net-core-docker-sample)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fraschmitt%2Fnet-core-docker-sample%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/raschmitt/net-core-docker-sample/master)
 [![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/raschmitt/net-core-docker-sample/latest?label=Latest%20Image&style=flat-square)](https://hub.docker.com/repository/docker/raschmitt/net-core-docker-sample)
+
+
 
 Sample .Net Core API, with SQL Server Database, containerized with Docker and ready to use.
 
