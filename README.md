@@ -14,7 +14,11 @@ Sample .Net Core API, with SQL Server Database, containerized with Docker and re
 
 - [Docker](https://docs.docker.com/get-docker/)
 
-## How to run
+## Live preview
+
+A live preview of this api can be found [here](https://net-core-docker-sample-service-raschmitt.cloud.okteto.net/swagger/index.html).
+
+## How to run locally
 
 - ### Running the API 
 
