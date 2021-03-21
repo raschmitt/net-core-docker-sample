@@ -6,7 +6,7 @@ volumes:
 services:     
     sql-server:
         image: "mcr.microsoft.com/mssql/server:2017-latest"
-        container_name: net-core-sample-db
+        container_name: sql-server-service
         environment:
             - ACCEPT_EULA=Y
             - SA_PASSWORD=sa@@2020

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: net-core-docker-sample-deploy
+spec:
+  replicas: 1
+  progressDeadlineSeconds: 180
+  selector:
+    matchLabels:
+      app: net-core-docker-sample
+  template:
+    metadata:
+      labels:
+        app: net-core-docker-sample
+    spec:
+      containers:
+      - name: net-core-docker-sample
+        image: raschmitt/net-core-docker-sample:latest
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          failureThreshold: 3
+          periodSeconds: 10

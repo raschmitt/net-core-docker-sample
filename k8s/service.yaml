@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: net-core-docker-sample-service
+spec:
+  selector:
+    app: net-core-docker-sample
+    restype: pod
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  type: ClusterIP
