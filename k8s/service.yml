@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: net-core-docker-sample-service
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
 spec:
   selector:
     app: net-core-docker-sample
@@ -11,3 +13,4 @@ spec:
     targetPort: 80
     protocol: TCP
   type: ClusterIP
+  
