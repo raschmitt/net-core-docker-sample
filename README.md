@@ -6,8 +6,6 @@
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fraschmitt%2Fnet-core-docker-sample%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/raschmitt/net-core-docker-sample/master)
 [![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/raschmitt/net-core-docker-sample/latest?label=Latest%20Image&style=flat-square)](https://hub.docker.com/repository/docker/raschmitt/net-core-docker-sample)
 
-
-
 Sample .Net Core API, with SQL Server Database, containerized with Docker and ready to use.
 
 ## Dependencies 
