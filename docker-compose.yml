@@ -19,7 +19,7 @@ services:
         image: net-core-sample
         container_name: net-core-sample
         build:
-            context: ./
+            context: ./NetCoreDockerSample/
             dockerfile: Dockerfile
         ports:
           - "8080:80"
