@@ -28,3 +28,11 @@ spec:
             port: 80
           failureThreshold: 3
           periodSeconds: 10
+        volumeMounts:
+        - mountPath: /ef-configuration.json
+          name: appsettings
+          subPath: ef-configuration.json
+    volumes:
+      - name: appsettings
+        secret:
+          secretName: net-core-docker-sample-appsettings
