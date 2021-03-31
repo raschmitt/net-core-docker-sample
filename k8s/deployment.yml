@@ -29,9 +29,9 @@ spec:
           failureThreshold: 3
           periodSeconds: 10
         volumeMounts:
-        - mountPath: /ef-configuration.json
+        - mountPath: /appsettings.json
           name: appsettings
-          subPath: ef-configuration.json
+          subPath: appsettings.json
       volumes:
         - name: appsettings
           secret:
