@@ -20,7 +20,7 @@ A live preview of this API can be found [here](https://net-core-docker-sample-se
 
 - ### Running the API 
 
-1. After cloning this repository go into the `NetCoreDockerSample` directory and run `docker-compose up`.
+1. After cloning this repository go into the `src` directory and run `docker-compose up`.
 
 2. Access [http://localhost:8080/swagger](http://localhost/swagger) and you are good to start playing with this API.
 
