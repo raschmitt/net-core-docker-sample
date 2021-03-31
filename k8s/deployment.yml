@@ -32,7 +32,7 @@ spec:
         - mountPath: /ef-configuration.json
           name: appsettings
           subPath: ef-configuration.json
-    volumes:
-      - name: appsettings
-        secret:
-          secretName: net-core-docker-sample-appsettings
+      volumes:
+        - name: appsettings
+          secret:
+            secretName: net-core-docker-sample-appsettings

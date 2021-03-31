@@ -6,7 +6,7 @@ volumes:
 services:     
     sql-server:
         image: "mcr.microsoft.com/mssql/server:2017-latest"
-        container_name: sql-server-service
+        container_name: sql-server
         environment:
             - ACCEPT_EULA=Y
             - SA_PASSWORD=sa@@2020
@@ -19,7 +19,7 @@ services:
         image: net-core-sample
         container_name: net-core-sample
         build:
-            context: ./NetCoreDockerSample/
+            context: ./src/
             dockerfile: Dockerfile
         ports:
           - "8080:80"
