@@ -1,5 +1,3 @@
-version: "3.8"
-
 volumes:
     sql-server:
 
@@ -14,6 +12,8 @@ services:
             - "1433:1433"
         volumes: 
             - sql-server:/var/opt/mssql
+        healthcheck:
+            test: /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -Q "SELECT 1"
 
     net-core-sample:
         image: net-core-sample
@@ -24,4 +24,5 @@ services:
         ports:
           - "8080:80"
         depends_on:
-          - sql-server
+          sql-server:
+            condition: service_healthy
