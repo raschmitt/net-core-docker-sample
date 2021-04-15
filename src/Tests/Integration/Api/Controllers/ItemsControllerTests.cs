@@ -12,7 +12,7 @@ using Xunit;
 
 namespace Tests.Integration.Api.Controllers
 {
-    public class ItemsContollerTests : BaseControllerTests
+    public class ItemsControllerTests : BaseControllerTests
     {
         private readonly ItemRepository _itemRepository;
 
@@ -22,7 +22,7 @@ namespace Tests.Integration.Api.Controllers
 
         private readonly List<Item> _activeItems;
         
-        public ItemsContollerTests() : base("/items")
+        public ItemsControllerTests() : base("/items")
         {
             _itemA = new ItemBuilder().Build();
             _itemB = new ItemBuilder().Build();
