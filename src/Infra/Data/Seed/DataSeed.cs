@@ -8,7 +8,6 @@
                 return;
             
             dbContext.AddItems();
-            
             dbContext.SaveChanges();
         }
         
