@@ -354,3 +354,6 @@ MigrationBackup/
 
 # Rider cache/options directory
 .idea/
+
+# development settings
+appsettings.Development.json
