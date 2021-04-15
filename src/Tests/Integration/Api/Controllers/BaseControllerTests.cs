@@ -13,7 +13,7 @@ namespace Tests.Integration.Api.Controllers
 
         protected readonly string ControllerUri;
 
-        public BaseControllerTests(string controllerUri)
+        protected BaseControllerTests(string controllerUri)
         {
             ControllerUri = controllerUri;
 
@@ -21,7 +21,7 @@ namespace Tests.Integration.Api.Controllers
             Client = Factory.CreateClient(new WebApplicationFactoryClientOptions());
         }
 
-        public async Task<T> DescerializeResponse<T>(HttpResponseMessage response)
+        protected async Task<T> DescerializeResponse<T>(HttpResponseMessage response)
         {
             return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
         }
