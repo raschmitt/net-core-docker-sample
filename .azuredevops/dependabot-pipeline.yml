@@ -13,4 +13,5 @@ steps:
     packageManager: 'nuget'
     versioningStrategy: 'auto'
     failOnException: true
+    gitHubConnection: 'raschmitt'
     azureDevOpsAccessToken: '$(PAT)'
