@@ -79,7 +79,7 @@ namespace Tests.Integration.Api.Controllers
             var response = await Client.GetAsync(ControllerUri);
 
             //Assert
-            var responseItems = await DescerializeResponse<List<ItemResponse>>(response);
+            var responseItems = await DeserializeResponse<List<ItemResponse>>(response);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -96,7 +96,7 @@ namespace Tests.Integration.Api.Controllers
             var response = await Client.GetAsync($"{ControllerUri}/{_itemC.Id}");
 
             //Assert
-            var responseItem = await DescerializeResponse<ItemResponse>(response);
+            var responseItem = await DeserializeResponse<ItemResponse>(response);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
