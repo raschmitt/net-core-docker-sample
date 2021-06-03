@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Domain.Dtos.ItemDtos;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using Domain.Mappers;
 using Domain.Services;
 using FluentAssertions;
 using NSubstitute;
-using Tests.Builder.Dtos.Item;
-using Tests.Builder.Entities;
+using Tests.Builders.Dtos;
+using Tests.Builders.Entities;
 using Xunit;
 
 namespace Tests.Unit.Domain.Services
@@ -25,10 +27,19 @@ namespace Tests.Unit.Domain.Services
         public ItemServiceTests()
         {
             _itemRepository = Substitute.For<IItemRepository>();
-            _itemService = new ItemService(_itemRepository);
             
-            _itemRequest = new ItemRequestBuilder().Build();
-            _item = new ItemBuilder().Build();
+            var mapper = new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<ItemMapper>();
+            })); 
+            
+            _itemService = new ItemService(_itemRepository, mapper);
+
+            _itemRequest = new ItemRequestBuilder()
+                .Build();
+
+            _item = new ItemBuilder()
+                .Build();
         }
         
         [Fact]
@@ -38,7 +49,7 @@ namespace Tests.Unit.Domain.Services
             var itemResponse = await _itemService.Add(_itemRequest);
 
             //Assert
-            itemResponse.Id.Should().NotBeEmpty();
+            itemResponse.Id.Should().BeEmpty();
             itemResponse.Description.Should().Be(_itemRequest.Description);
             itemResponse.Price.Should().Be(_itemRequest.Price);
             itemResponse.Active.Should().BeTrue();
@@ -98,9 +109,9 @@ namespace Tests.Unit.Domain.Services
         
             //Assert
             itemResponse.Id.Should().Be(_item.Id);
-            itemResponse.Description.Should().Be(_itemRequest.Description);
-            itemResponse.Price.Should().Be(_itemRequest.Price);
-            itemResponse.Active.Should().BeTrue();
+            itemResponse.Description.Should().Be(_item.Description);
+            itemResponse.Price.Should().Be(_item.Price);
+            itemResponse.Active.Should().Be(_item.Active);
             
             await _itemRepository.Received(1).GetById(_item.Id);
         }    
@@ -109,21 +120,16 @@ namespace Tests.Unit.Domain.Services
         public async Task Should_update_an_item()
         {
             //Arrange
-            var itemRequest = new ItemRequestBuilder()
-                .WithDescription("Banana")
-                .WithPrice(5.75)
-                .Build();
-            
             _itemRepository.GetById(_item.Id).Returns(_item);
             
             //Act
-            var itemResponse = await _itemService.Update(_item.Id, itemRequest);
+            var itemResponse = await _itemService.Update(_item.Id, _itemRequest);
         
             //Assert
             itemResponse.Id.Should().Be(_item.Id);
-            itemResponse.Description.Should().Be(itemRequest.Description);
-            itemResponse.Price.Should().Be(itemRequest.Price);
-            itemResponse.Active.Should().BeTrue();
+            itemResponse.Description.Should().Be(_itemRequest.Description);
+            itemResponse.Price.Should().Be(_itemRequest.Price);
+            itemResponse.Active.Should().Be(_item.Active);
             
             await _itemRepository.Received(1).Update(_item);
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Domain.Dtos.ItemDtos;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
@@ -12,19 +13,23 @@ namespace Domain.Services
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepository;
+        private readonly IMapper _mapper;
         
-        public ItemService(IItemRepository itemRepository)
+        public ItemService(IItemRepository itemRepository, IMapper mapper)
         {
             _itemRepository = itemRepository;
+            _mapper = mapper;
         }
 
         public async Task<ItemResponse> Add(ItemRequest itemRequest)
         {
-            var item = new Item(itemRequest);
+            var item = _mapper.Map<ItemRequest, Item>(itemRequest);
 
             await _itemRepository.Add(item);
 
-            return new ItemResponse(item);
+            var itemResponse = _mapper.Map<ItemResponse>(item);
+            
+            return itemResponse;
         }
         
         public async Task Delete(Guid id)
@@ -40,14 +45,16 @@ namespace Domain.Services
         {
             var items = await _itemRepository.GetAll();
             
-            return items.Select(i => new ItemResponse(i)).ToList();
+            return items.Select(i => _mapper.Map<ItemResponse>(i)).ToList();
         }
         
         public async Task<ItemResponse> GetById(Guid id)
         {
             var item = await _itemRepository.GetById(id);
             
-            return new ItemResponse(item);
+            var itemResponse = _mapper.Map<ItemResponse>(item);
+
+            return itemResponse;
         }
         
         public async Task<ItemResponse> Update(Guid id, ItemRequest itemRequest)
@@ -58,7 +65,9 @@ namespace Domain.Services
             
             await _itemRepository.Update(item);
             
-            return new ItemResponse(item);
+            var itemResponse = _mapper.Map<ItemResponse>(item);
+
+            return itemResponse;
         }
     }
 }
