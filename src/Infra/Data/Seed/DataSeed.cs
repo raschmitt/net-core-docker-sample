@@ -1,4 +1,7 @@
-﻿namespace Infra.Data.Seed
+﻿using AutoMapper;
+using Domain.Mappers;
+
+namespace Infra.Data.Seed
 {
     public static class DataSeed
     {
@@ -7,7 +10,12 @@
             if (IsSqlite(dbContext.Database.ProviderName))
                 return;
             
-            dbContext.AddItems();
+            var mapper = new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<ItemMapper>();
+            })); 
+            
+            dbContext.AddItems(mapper);
             dbContext.SaveChanges();
         }
         

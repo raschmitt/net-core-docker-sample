@@ -23,7 +23,7 @@ namespace Domain.Services
 
         public async Task<ItemResponse> Add(ItemRequest itemRequest)
         {
-            var item = _mapper.Map<ItemRequest, Item>(itemRequest);
+            var item = _mapper.Map<Item>(itemRequest);
 
             await _itemRepository.Add(item);
 
