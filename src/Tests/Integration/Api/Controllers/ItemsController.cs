@@ -6,31 +6,37 @@ using Domain.Dtos.ItemDtos;
 using Domain.Entities;
 using FluentAssertions;
 using Infra.Data.Repositories;
-using Tests.Builder.Dtos.Item;
-using Tests.Builder.Entities;
+using Tests.Builders.Dtos;
+using Tests.Builders.Entities;
 using Xunit;
 
 namespace Tests.Integration.Api.Controllers
 {
-    public class ItemsControllerTests : BaseControllerTests
+    public class ItemsController : BaseTestClient
     {
         private readonly ItemRepository _itemRepository;
-
+        
         private readonly Item _itemA;
         private readonly Item _itemB;
         private readonly Item _itemC;
 
         private readonly List<Item> _activeItems;
         
-        public ItemsControllerTests() : base("/items")
+        private readonly ItemRequest _itemRequest;
+        
+        public ItemsController() : base("/items")
         {
             _itemA = new ItemBuilder().Build();
             _itemB = new ItemBuilder().Build();
-            _itemC = new ItemBuilder().Inactive().Build();
-
+            _itemC = new ItemBuilder()
+                .WithInactiveStatus()
+                .Build();
+                
             _activeItems = new List<Item> {_itemA, _itemB};
             
             Factory.SeedData(_itemA, _itemB, _itemC);
+
+            _itemRequest = new ItemRequestBuilder().Build();
 
             _itemRepository = new ItemRepository(Factory.GetContext());
         }
@@ -38,22 +44,19 @@ namespace Tests.Integration.Api.Controllers
         [Fact]
         public async Task Should_add_an_item()
         {
-            //Arrange
-            var itemRequest = new ItemRequestBuilder()
-                .WithDescription("Banana")
-                .WithPrice(7.65)
-                .Build();
-
             // Act
-            var response = await Client.PostAsJsonAsync(ControllerUri, itemRequest);
+            var response = await Client.PostAsJsonAsync(ControllerUri, _itemRequest);
 
             //Assert
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-
+            response.StatusCode.Should().Be(HttpStatusCode.Created);
+            
+            var responseItem = await DeserializeResponse<ItemResponse>(response);
+            
+            responseItem.Should().BeEquivalentTo(_itemRequest);
+            
             var items = await _itemRepository.GetAll();
 
             items.Should().HaveCount(_activeItems.Count + 1);
-            items.Should().ContainEquivalentOf(itemRequest);
         }
 
         [Fact]
@@ -106,21 +109,19 @@ namespace Tests.Integration.Api.Controllers
         [Fact]
         public async Task Should_update_an_item()
         {
-            //Arrange
-            var itemRequest = new ItemRequestBuilder()
-                .WithDescription("Banana")
-                .WithPrice(7.65)
-                .Build();
-
             // Act
-            var response = await Client.PutAsJsonAsync($"{ControllerUri}/{_itemA.Id}", itemRequest);
+            var response = await Client.PutAsJsonAsync($"{ControllerUri}/{_itemA.Id}", _itemRequest);
 
             //Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
+            var responseItem = await DeserializeResponse<ItemResponse>(response);
+            
+            responseItem.Should().BeEquivalentTo(_itemRequest);
+            
             var item = await _itemRepository.GetById(_itemA.Id);
 
-            item.Should().BeEquivalentTo(itemRequest);
+            item.Should().BeEquivalentTo(_itemRequest);
         }
     }
 }

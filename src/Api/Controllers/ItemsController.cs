@@ -20,7 +20,9 @@ namespace Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] ItemRequest itemRequest)
         {
-            return Ok(await _itemService.Add(itemRequest));
+            var result = await _itemService.Add(itemRequest);
+            
+            return Created($"/{result.Id}", result);
         }
         
         [HttpDelete("{id}")]
@@ -34,19 +36,25 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _itemService.GetAll());
+            var result = await _itemService.GetAll();
+            
+            return Ok(result);
         }        
         
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            return Ok(await _itemService.GetById(id));
+            var result = await _itemService.GetById(id);
+            
+            return Ok(result);
         }        
         
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ItemRequest itemRequest)
         {
-            return Ok(await _itemService.Update(id, itemRequest));
+            var result = await _itemService.Update(id, itemRequest);
+            
+            return Ok(result);
         } 
     }
 }

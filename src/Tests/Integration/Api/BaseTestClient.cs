@@ -4,16 +4,16 @@ using Api;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 
-namespace Tests.Integration.Api.Controllers
+namespace Tests.Integration.Api
 {
-    public abstract class BaseControllerTests
+    public abstract class BaseTestClient
     {
         protected readonly HttpClient Client;
         protected readonly CustomWebApplicationFactory<Startup> Factory;
 
         protected readonly string ControllerUri;
 
-        protected BaseControllerTests(string controllerUri)
+        protected BaseTestClient(string controllerUri)
         {
             ControllerUri = controllerUri;
 

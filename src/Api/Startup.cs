@@ -1,6 +1,7 @@
 using System;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using Domain.Mappers;
 using Domain.Services;
 using Infra.Data;
 using Infra.Data.Repositories;
@@ -11,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Api
 {
@@ -28,13 +28,14 @@ namespace Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
-
             services.AddHealthChecks();
             
             services.AddDbContext<Context>(UseSqlServerDatabase);
 
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IItemRepository, ItemRepository>();
+            
+            services.AddAutoMapper(typeof(ItemMapper));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,11 +51,6 @@ namespace Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", ".Net Core Docker Sample - v1");
             });
-            
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseRouting();
             app.UseEndpoints(endpoints =>

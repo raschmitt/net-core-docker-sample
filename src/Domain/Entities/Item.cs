@@ -7,19 +7,11 @@ namespace Domain.Entities
     {
         public Guid Id { get; private set; } 
         public string Description { get; private set; } 
-        public double Price { get; private set; } 
-        public bool Active { get; private set; }
+        public double Price { get; private set; }
+        public bool Active { get; private set; } = true;
 
-        private Item() { }
+        protected Item() { }
         
-        public Item(ItemRequest itemRequest)
-        {
-            Id = Guid.NewGuid();
-            Description = itemRequest.Description;
-            Price = itemRequest.Price;
-            Active = true;
-        }
-
         public void Update(ItemRequest itemRequest)
         {
             Description = itemRequest.Description;
