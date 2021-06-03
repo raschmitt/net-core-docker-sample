@@ -45,7 +45,7 @@ namespace Domain.Services
         {
             var items = await _itemRepository.GetAll();
             
-            return items.Select(i => _mapper.Map<ItemResponse>(i)).ToList();
+            return items.Select(_mapper.Map<ItemResponse>).ToList();
         }
         
         public async Task<ItemResponse> GetById(Guid id)
