@@ -17,6 +17,9 @@ namespace Api.Controllers
             _itemService = itemService;
         }
         
+        /// <summary>
+        /// Adds an item
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] ItemRequest itemRequest)
         {
@@ -25,6 +28,9 @@ namespace Api.Controllers
             return Created($"/{result.Id}", result);
         }
         
+        /// <summary>
+        /// Deletes a specific item
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
@@ -33,6 +39,9 @@ namespace Api.Controllers
             return NoContent();
         }
     
+        /// <summary>
+        /// Gets all items
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -41,6 +50,9 @@ namespace Api.Controllers
             return Ok(result);
         }        
         
+        /// <summary>
+        /// Gets a specific item
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
@@ -49,6 +61,9 @@ namespace Api.Controllers
             return Ok(result);
         }        
         
+        /// <summary>
+        /// Updates a specific item
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ItemRequest itemRequest)
         {
