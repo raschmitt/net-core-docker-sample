@@ -57,12 +57,24 @@ namespace Tests.Unit.Domain.Extensions
             result.Should().BeInAscendingOrder(x => x.Description);
         }     
         
-        
         [Fact]
-        public void Should_not_order()
+        public void Should_not_order_with_empty_string()
         {
             // Arrange
             var propertyName = string.Empty;
+            
+            // Act
+            var result = _items.OrderBy(propertyName).ToList();
+
+            // Assert
+            result.Should().BeEquivalentTo(_items);
+        }        
+        
+        [Fact]
+        public void Should_not_order_with_null_string()
+        {
+            // Arrange
+            string propertyName = null;
             
             // Act
             var result = _items.OrderBy(propertyName).ToList();
