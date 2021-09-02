@@ -30,7 +30,6 @@ namespace Api
         {
             app.ConfigureInfra();
             app.ConfigureSwagger(provider);
-            
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             { 

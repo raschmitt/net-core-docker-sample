@@ -19,7 +19,7 @@ namespace Api.Registers
                 p.AssumeDefaultVersionWhenUnspecified = true;
                 p.ReportApiVersions = true;
             });
-            
+
             services.AddVersionedApiExplorer(p =>
             {
                 p.GroupNameFormat = "'v'VVV";
@@ -28,12 +28,12 @@ namespace Api.Registers
 
             using var sp = services.BuildServiceProvider();
             var apiVersionProvider = sp.GetService<IApiVersionDescriptionProvider>();
-            
+
             services.AddSwaggerGen(options =>
             {
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                
+
                 foreach (var description in apiVersionProvider.ApiVersionDescriptions)
                 {
                     options.SwaggerDoc(
@@ -50,11 +50,11 @@ namespace Api.Registers
                             }
                         });
                 }
-                
+
                 options.IncludeXmlComments(xmlPath);
             });
         }
-        
+
         public static void ConfigureSwagger(this IApplicationBuilder app, IApiVersionDescriptionProvider apiVersionProvider)
         {
             app.UseSwagger();
