@@ -10,7 +10,7 @@ using Tests.Builders.Dtos;
 using Tests.Builders.Entities;
 using Xunit;
 
-namespace Tests.Integration.Api.Controllers
+namespace Tests.Integration.Api.Controllers.v1
 {
     public class ItemsController : BaseTestClient
     {
@@ -24,7 +24,7 @@ namespace Tests.Integration.Api.Controllers
         
         private readonly ItemRequest _itemRequest;
         
-        public ItemsController() : base("/items")
+        public ItemsController() : base("api/v1/items")
         {
             _itemA = new ItemBuilder().Build();
             _itemB = new ItemBuilder().Build();

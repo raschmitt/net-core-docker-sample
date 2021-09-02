@@ -1,7 +1,7 @@
 using Api.Registers;
 using Domain.Mappers;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,10 +26,10 @@ namespace Api
             services.AddAutoMapper(typeof(ItemMapper));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
             app.ConfigureInfra();
-            app.ConfigureSwagger();
+            app.ConfigureSwagger(provider);
             
             app.UseRouting();
             app.UseEndpoints(endpoints =>
