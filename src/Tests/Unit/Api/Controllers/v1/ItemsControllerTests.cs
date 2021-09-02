@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Api.Controllers;
+using Api.Controllers.v1;
 using Domain.Dtos.ItemDtos;
 using Domain.Interfaces.Services;
 using FluentAssertions;
@@ -9,7 +9,7 @@ using NSubstitute;
 using Tests.Builders.Dtos;
 using Xunit;
 
-namespace Tests.Unit.Api.Controllers
+namespace Tests.Unit.Api.Controllers.v1
 {
     public class ItemsControllerTests
     {

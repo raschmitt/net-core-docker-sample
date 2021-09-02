@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Dtos.ItemDtos;
 using Domain.Entities;
+using Domain.Extensions;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 
@@ -46,6 +47,13 @@ namespace Domain.Services
             var items = await _itemRepository.GetAll();
             
             return items.Select(_mapper.Map<ItemResponse>).ToList();
+        }
+        
+        public async Task<List<ItemResponse>> GetAllOrdered(string propertyName)
+        {
+            var items = await _itemRepository.GetAll();
+            
+            return items.Select(_mapper.Map<ItemResponse>).OrderBy(propertyName).ToList();
         }
         
         public async Task<ItemResponse> GetById(Guid id)

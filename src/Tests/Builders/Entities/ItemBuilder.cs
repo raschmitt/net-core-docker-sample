@@ -9,6 +9,8 @@ namespace Tests.Builders.Entities
     {
         private IMapper _mapper;
 
+        private string _description = "Bacon";
+        private double _price = 10.90;
         private bool _active = true;
         
         public ItemBuilder()
@@ -21,6 +23,8 @@ namespace Tests.Builders.Entities
         public Item Build()
         {
             var itemRequest = new ItemRequestBuilder()
+                .WithPrice(_price)
+                .WithDescription(_description)
                 .Build();
 
             var item = _mapper.Map<Item>(itemRequest);
@@ -34,6 +38,18 @@ namespace Tests.Builders.Entities
         public ItemBuilder WithInactiveStatus()
         {
             _active = false;
+            return this;
+        }
+        
+        public ItemBuilder WithPrice(double value)
+        {
+            _price = value;
+            return this;
+        }   
+        
+        public ItemBuilder WithDescription(string value)
+        {
+            _description = value;
             return this;
         }
     }

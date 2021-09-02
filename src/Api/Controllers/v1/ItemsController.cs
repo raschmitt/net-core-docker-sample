@@ -4,10 +4,11 @@ using Domain.Dtos.ItemDtos;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace Api.Controllers.v1
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ItemsController : ControllerBase
     {
         private readonly IItemService _itemService;

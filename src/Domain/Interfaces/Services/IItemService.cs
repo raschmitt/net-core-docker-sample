@@ -10,6 +10,7 @@ namespace Domain.Interfaces.Services
         Task<ItemResponse> Add(ItemRequest itemRequest);
         Task Delete(Guid id);
         Task<List<ItemResponse>> GetAll();
+        Task<List<ItemResponse>> GetAllOrdered(string propertyName);
         Task<ItemResponse> GetById(Guid id);
         Task<ItemResponse> Update(Guid id, ItemRequest itemRequest);
     }
