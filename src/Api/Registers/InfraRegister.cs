@@ -33,7 +33,7 @@ namespace Api.Registers
             options.UseSqlServer(GetConnectionDefaultString(configuration), EnableRetryOnFailure);
         
         private static string GetConnectionDefaultString(IConfiguration configuration) => 
-            configuration.GetConnectionString("Connection");
+            configuration.GetConnectionString("Database");
         
         private static void EnableRetryOnFailure(SqlServerDbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);

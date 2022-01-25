@@ -1,6 +1,8 @@
 using Api.Registers;
 using Domain.Mappers;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +22,7 @@ namespace Api
         {
             services.AddControllers();
             services.AddSwagger();
-            services.AddHealthChecks();
+            services.AddHealthChecks(Configuration);
             services.AddDomain();
             services.AddInfra(Configuration);
             services.AddAutoMapper(typeof(ItemMapper));
@@ -33,8 +35,11 @@ namespace Api
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             { 
-                endpoints.MapHealthChecks("/health");
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions
+                {
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         }
     }
